@@ -11,6 +11,7 @@ app.set("views", "./src/views");
 // 템플릿 엔진 세팅
 app.set("view engine", "ejs");
 
+app.use(express.static(`${__dirname}/src/public`));
 app.use("/", home); // use => 미들웨어 등록 메서드.
 
 module.exports = app;
