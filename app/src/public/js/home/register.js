@@ -11,13 +11,14 @@ registerBtn.addEventListener('click', register);
 // 에로우함수 사용시 결과가 다르다
 function register()  {
     if(!id.value) return alert("아이디를 입력해주세요.");
-    if(psword !== confirmPsword) {
+    if(psword.value !== confirmPsword.value) {
         return alert("비밀번호가 일치하지 않습니다.");
     }
 
     const req = {
         id : id.value,
         name : name.value,
+        psword : psword.value
     };
 
     fetch("/register", {
