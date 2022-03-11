@@ -3,16 +3,11 @@
 const express = require('express');
 const app = express();
 const dotenv = require("dotenv");
-const morgan = require("morgan");
 
 dotenv.config();
 
-const accessLogStream = require("./src/config/log");
-
 // 라우팅
 const home = require("./src/routes/home");
-
-
 
 // 앱 경로 세팅
 app.set("views", "./src/views");
@@ -24,11 +19,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 app.use(express.static(`${__dirname}/src/public`));
-app.use(morgan("dev"))
-app.use(morgan("common", { stream: accessLogStream }));
  
 app.use("/", home); // use => 미들웨어 등록 메서드.
-
-
 
 module.exports = app;
